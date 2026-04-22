@@ -48,7 +48,7 @@
         .featured-story { grid-column: 1 / -1; margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 40px; }
         .featured-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         
-        /* FIXED: Full image visibility - No cropping */
+        /* FIXED: Full image visibility - NO CROPPING */
         .featured-img { 
             width: 100%; 
             height: auto; 
@@ -65,7 +65,7 @@
         .story-list { display: flex; flex-direction: column; gap: 50px; }
         .story-card { display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start; border-bottom: 1px solid var(--color-border); padding-bottom: 30px; }
         
-        /* FIXED: Full image visibility for story cards - No cropping */
+        /* FIXED: Full image visibility for story cards - NO CROPPING */
         .story-card img { 
             width: 100%; 
             height: auto; 
@@ -87,7 +87,7 @@
         footer { 
             background: #004d2c; /* Tuko's signature dark green */
             color: #fff; 
-            padding: 60px 0 40px 0; 
+            padding: 60px 0 0 0; 
             margin-top: 80px; 
             width: 100%; 
             display: block;
