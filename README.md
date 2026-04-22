@@ -1,8 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Optimized for Desktop: Removed initial-scale=1.0 to encourage desktop rendering on mobile if needed, but kept for responsiveness -->
-    <meta name="viewport" content="width=1280"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE RULE | Truth & Authority</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,13 +17,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--color-bg); 
-            color: var(--color-text); 
-            font-family: var(--font-main); 
-            line-height: 1.6;
-            min-width: 1200px; /* Ensures desktop feel */
-        }
+        body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-main); line-height: 1.6; }
 
         header { border-bottom: 4px solid var(--color-accent); padding: 30px 0; text-align: center; }
         .logo-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
@@ -58,51 +51,15 @@
         .trending-item img { width: 90px; height: 90px; object-fit: cover; }
         .trending-item h4 { font-size: 0.95rem; line-height: 1.3; font-family: var(--font-heading); }
 
-        /* Redesigned Footer: Full-width black, no white box */
-        footer { 
-            background: #000; 
-            color: #fff; 
-            padding: 60px 0; 
-            margin-top: 80px; 
-            width: 100%;
-            text-align: center;
-        }
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-logo { 
-            height: 120px; 
-            filter: brightness(0) invert(1); 
-            margin-bottom: 30px; 
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-text { 
-            font-size: 0.85rem; 
-            opacity: 0.8; 
-            letter-spacing: 3px; 
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-        }
-        .footer-social i {
-            color: #fff;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .footer-social i:hover {
-            color: var(--color-accent);
-        }
+        footer { background: #000; color: #fff; padding: 80px 0; margin-top: 80px; text-align: center; }
+        .footer-logo { height: 100px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+        .footer-text { font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px; }
 
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .story-card { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -221,14 +178,7 @@
 </div>
 
 <footer>
-    <div class="footer-inner">
-        <div class="footer-social">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-            <i class="fab fa-youtube"></i>
-        </div>
+    <div class="logo-container">
         <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663587410563/YTcqjfynEoJTHdXH.png" alt="The Rule Logo" class="footer-logo">
         <p class="footer-text">&copy; 2026 THE RULE. TRUTH & AUTHORITY. ALL RIGHTS RESERVED.</p>
     </div>
