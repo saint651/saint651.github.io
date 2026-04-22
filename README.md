@@ -16,22 +16,8 @@
             --font-body: 'Lora', serif;
         }
 
-        /* RESET: Essential to remove all white gaps */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: var(--color-bg);
-            overflow-x: hidden;
-        }
-
-        * { box-sizing: border-box; }
-        
-        body { 
-            color: var(--color-text); 
-            font-family: var(--font-main); 
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-main); line-height: 1.6; }
 
         header { border-bottom: 4px solid var(--color-accent); padding: 30px 0; text-align: center; }
         .logo-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
@@ -39,7 +25,7 @@
         .tagline { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: #333; margin-top: -20px; }
 
         nav { border-bottom: 1px solid var(--color-border); background: #fff; position: sticky; top: 0; z-index: 1000; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; padding: 15px 0; flex-wrap: wrap; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; padding: 15px 0; }
         .nav-inner a { text-decoration: none; color: var(--color-text); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
         .nav-inner a:hover { color: var(--color-accent); }
 
@@ -47,31 +33,14 @@
 
         .featured-story { grid-column: 1 / -1; margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 40px; }
         .featured-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
-        
-        /* FIXED: Full image visibility */
-        .featured-img { 
-            width: 100%; 
-            height: auto; 
-            display: block;
-            border-radius: 0; 
-            box-shadow: 10px 10px 0px var(--color-accent); 
-        }
-        
+        .featured-img { width: 100%; border-radius: 0; box-shadow: 10px 10px 0px var(--color-accent); }
         .featured-content h2 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 20px; line-height: 1.1; font-weight: 900; }
         .featured-content p { font-family: var(--font-body); font-size: 1.1rem; color: #333; margin-bottom: 15px; }
         .category-tag { background: var(--color-accent); color: #fff; padding: 4px 12px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
 
         .story-list { display: flex; flex-direction: column; gap: 50px; }
         .story-card { display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start; border-bottom: 1px solid var(--color-border); padding-bottom: 30px; }
-        
-        /* FIXED: Full image visibility for story cards */
-        .story-card img { 
-            width: 100%; 
-            height: auto; 
-            display: block;
-            object-fit: contain;
-        }
-        
+        .story-card img { width: 100%; height: 240px; object-fit: cover; }
         .story-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; line-height: 1.2; }
         .story-card p { font-family: var(--font-body); color: #444; font-size: 1rem; }
 
@@ -82,86 +51,14 @@
         .trending-item img { width: 90px; height: 90px; object-fit: cover; }
         .trending-item h4 { font-size: 0.95rem; line-height: 1.3; font-family: var(--font-heading); }
 
-        /* FIXED: TOTAL BLACK RECTANGULAR FOOTER - EDGE TO EDGE */
-        footer { 
-            background: #000; 
-            color: #fff; 
-            padding: 80px 0; 
-            margin-top: 80px; 
-            width: 100%; 
-            display: block;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-logo { 
-            height: 140px; 
-            filter: brightness(0) invert(1); 
-            margin-bottom: 40px; 
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            font-size: 2rem;
-        }
-        .footer-social i {
-            color: #fff;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .footer-social i:hover {
-            color: var(--color-accent);
-        }
-        
-        /* Classic bottom bar with Copyright and Links */
-        .footer-bottom-bar {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-text { 
-            font-size: 0.85rem; 
-            opacity: 0.9; 
-            letter-spacing: 2px; 
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .footer-links-group {
-            display: flex;
-            gap: 30px;
-        }
-        .footer-link {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            text-decoration: none;
-            color: #fff;
-        }
-        .footer-link:hover {
-            color: var(--color-accent);
-        }
+        footer { background: #000; color: #fff; padding: 80px 0; margin-top: 80px; text-align: center; }
+        .footer-logo { height: 100px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+        .footer-text { font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px; }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
             .featured-grid { grid-template-columns: 1fr; }
             .story-card { grid-template-columns: 1fr; }
-            .footer-bottom-bar { justify-content: center; text-align: center; flex-direction: column; }
         }
     </style>
 </head>
@@ -281,23 +178,9 @@
 </div>
 
 <footer>
-    <div class="footer-inner">
-        <div class="footer-social">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-            <i class="fab fa-youtube"></i>
-        </div>
+    <div class="logo-container">
         <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663587410563/YTcqjfynEoJTHdXH.png" alt="The Rule Logo" class="footer-logo">
-        <div class="footer-bottom-bar">
-            <p class="footer-text">&copy; 2026 THE RULE. ALL RIGHTS RESERVED.</p>
-            <div class="footer-links-group">
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Contact Us</a>
-            </div>
-        </div>
+        <p class="footer-text">&copy; 2026 THE RULE. TRUTH & AUTHORITY. ALL RIGHTS RESERVED.</p>
     </div>
 </footer>
 
