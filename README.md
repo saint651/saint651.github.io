@@ -16,13 +16,21 @@
             --font-body: 'Lora', serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* RESET: Essential to remove all white gaps */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        * { box-sizing: border-box; }
+        
         body { 
-            background-color: var(--color-bg); 
             color: var(--color-text); 
             font-family: var(--font-main); 
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         header { border-bottom: 4px solid var(--color-accent); padding: 30px 0; text-align: center; }
@@ -40,10 +48,10 @@
         .featured-story { grid-column: 1 / -1; margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 40px; }
         .featured-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         
-        /* FIXED: Ensure images are fully viewed */
+        /* FIXED: Full image visibility */
         .featured-img { 
             width: 100%; 
-            height: auto; /* Allow full height visibility */
+            height: auto; 
             display: block;
             border-radius: 0; 
             box-shadow: 10px 10px 0px var(--color-accent); 
@@ -56,13 +64,12 @@
         .story-list { display: flex; flex-direction: column; gap: 50px; }
         .story-card { display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start; border-bottom: 1px solid var(--color-border); padding-bottom: 30px; }
         
-        /* FIXED: Ensure story images are fully viewed */
+        /* FIXED: Full image visibility for story cards */
         .story-card img { 
             width: 100%; 
-            height: auto; /* Allow full height visibility */
-            max-height: 400px; /* Optional: prevent extreme verticality */
-            object-fit: contain; /* Ensure full image is seen */
-            background: #f0f0f0;
+            height: auto; 
+            display: block;
+            object-fit: contain;
         }
         
         .story-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; line-height: 1.2; }
@@ -75,19 +82,16 @@
         .trending-item img { width: 90px; height: 90px; object-fit: cover; }
         .trending-item h4 { font-size: 0.95rem; line-height: 1.3; font-family: var(--font-heading); }
 
-        /* FIXED: Full-width black footer without white box */
+        /* FIXED: TOTAL BLACK RECTANGULAR FOOTER - EDGE TO EDGE */
         footer { 
             background: #000; 
             color: #fff; 
-            padding: 80px 0 40px 0; 
+            padding: 80px 0; 
             margin-top: 80px; 
-            width: 100vw; /* Force full viewport width */
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
+            width: 100%; 
+            display: block;
             text-align: center;
+            border-top: 1px solid #333;
         }
         .footer-inner {
             max-width: 1200px;
@@ -95,48 +99,19 @@
             padding: 0 20px;
         }
         .footer-logo { 
-            height: 120px; 
+            height: 140px; 
             filter: brightness(0) invert(1); 
-            margin-bottom: 30px; 
+            margin-bottom: 40px; 
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
-        .footer-links {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-text { 
-            font-size: 0.8rem; 
-            opacity: 0.8; 
-            letter-spacing: 2px; 
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .footer-tos {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            text-decoration: none;
-            color: #fff;
-        }
-        .footer-tos:hover {
-            color: var(--color-accent);
-        }
         .footer-social {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
+            gap: 40px;
+            margin-bottom: 40px;
+            font-size: 2rem;
         }
         .footer-social i {
             color: #fff;
@@ -146,12 +121,47 @@
         .footer-social i:hover {
             color: var(--color-accent);
         }
+        
+        /* Classic bottom bar with Copyright and Links */
+        .footer-bottom-bar {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-text { 
+            font-size: 0.85rem; 
+            opacity: 0.9; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .footer-links-group {
+            display: flex;
+            gap: 30px;
+        }
+        .footer-link {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+        }
+        .footer-link:hover {
+            color: var(--color-accent);
+        }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
             .featured-grid { grid-template-columns: 1fr; }
             .story-card { grid-template-columns: 1fr; }
-            .footer-links { justify-content: center; text-align: center; }
+            .footer-bottom-bar { justify-content: center; text-align: center; flex-direction: column; }
         }
     </style>
 </head>
@@ -280,10 +290,13 @@
             <i class="fab fa-youtube"></i>
         </div>
         <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663587410563/YTcqjfynEoJTHdXH.png" alt="The Rule Logo" class="footer-logo">
-        <div class="footer-links">
-            <p class="footer-text">&copy; 2026 THE RULE. TRUTH & AUTHORITY. ALL RIGHTS RESERVED.</p>
-            <a href="#" class="footer-tos">Terms of Service</a>
-            <a href="#" class="footer-tos">Privacy Policy</a>
+        <div class="footer-bottom-bar">
+            <p class="footer-text">&copy; 2026 THE RULE. ALL RIGHTS RESERVED.</p>
+            <div class="footer-links-group">
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact Us</a>
+            </div>
         </div>
     </div>
 </footer>
