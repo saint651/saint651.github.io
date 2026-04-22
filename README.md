@@ -16,8 +16,22 @@
             --font-body: 'Lora', serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-main); line-height: 1.6; }
+        /* RESET: Essential to remove all white gaps */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body { 
+            color: var(--color-text); 
+            font-family: var(--font-main); 
+            line-height: 1.6;
+        }
 
         header { border-bottom: 4px solid var(--color-accent); padding: 30px 0; text-align: center; }
         .logo-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
@@ -25,7 +39,7 @@
         .tagline { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: #333; margin-top: -20px; }
 
         nav { border-bottom: 1px solid var(--color-border); background: #fff; position: sticky; top: 0; z-index: 1000; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; padding: 15px 0; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; padding: 15px 0; flex-wrap: wrap; }
         .nav-inner a { text-decoration: none; color: var(--color-text); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
         .nav-inner a:hover { color: var(--color-accent); }
 
@@ -33,14 +47,32 @@
 
         .featured-story { grid-column: 1 / -1; margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 40px; }
         .featured-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
-        .featured-img { width: 100%; border-radius: 0; box-shadow: 10px 10px 0px var(--color-accent); }
+        
+        /* FIXED: Full image visibility - No cropping */
+        .featured-img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            border-radius: 0; 
+            box-shadow: 10px 10px 0px var(--color-accent); 
+            object-fit: contain; /* Ensure whole image is seen */
+        }
+        
         .featured-content h2 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 20px; line-height: 1.1; font-weight: 900; }
         .featured-content p { font-family: var(--font-body); font-size: 1.1rem; color: #333; margin-bottom: 15px; }
         .category-tag { background: var(--color-accent); color: #fff; padding: 4px 12px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
 
         .story-list { display: flex; flex-direction: column; gap: 50px; }
         .story-card { display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start; border-bottom: 1px solid var(--color-border); padding-bottom: 30px; }
-        .story-card img { width: 100%; height: 240px; object-fit: cover; }
+        
+        /* FIXED: Full image visibility for story cards - No cropping */
+        .story-card img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            object-fit: contain; /* Ensure whole image is seen */
+        }
+        
         .story-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; line-height: 1.2; }
         .story-card p { font-family: var(--font-body); color: #444; font-size: 1rem; }
 
@@ -51,14 +83,89 @@
         .trending-item img { width: 90px; height: 90px; object-fit: cover; }
         .trending-item h4 { font-size: 0.95rem; line-height: 1.3; font-family: var(--font-heading); }
 
-        footer { background: #000; color: #fff; padding: 80px 0; margin-top: 80px; text-align: center; }
-        .footer-logo { height: 100px; filter: brightness(0) invert(1); margin-bottom: 20px; }
-        .footer-text { font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px; }
+        /* TUKO STYLE FOOTER: Full-width dark green/black block */
+        footer { 
+            background: #004d2c; /* Tuko's signature dark green */
+            color: #fff; 
+            padding: 60px 0 40px 0; 
+            margin-top: 80px; 
+            width: 100%; 
+            display: block;
+            border-top: 1px solid #003d23;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        .footer-column h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            background: #003d23; /* Darker bottom bar */
+            padding: 30px 0;
+            margin-top: 60px;
+            width: 100%;
+        }
+        .footer-bottom-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-social-icons a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer-social-icons a:hover {
+            opacity: 1;
+        }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
             .featured-grid { grid-template-columns: 1fr; }
             .story-card { grid-template-columns: 1fr; }
+            .footer-bottom-inner { justify-content: center; text-align: center; flex-direction: column; }
         }
     </style>
 </head>
@@ -178,9 +285,52 @@
 </div>
 
 <footer>
-    <div class="logo-container">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663587410563/YTcqjfynEoJTHdXH.png" alt="The Rule Logo" class="footer-logo">
-        <p class="footer-text">&copy; 2026 THE RULE. TRUTH & AUTHORITY. ALL RIGHTS RESERVED.</p>
+    <div class="footer-inner">
+        <div class="footer-column">
+            <h3>About Our Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Authors</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Our Manifesto</a></li>
+                <li><a href="#">Advertise with us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Terms and conditions</a></li>
+                <li><a href="#">Policies and standards</a></li>
+                <li><a href="#">Cookie policy</a></li>
+                <li><a href="#">DMCA removal</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Social Media</h3>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">X (Twitter)</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <div class="footer-copyright">
+                THE RULE MEDIA LTD, 2026<br>
+                All rights reserved
+            </div>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </div>
 </footer>
 
